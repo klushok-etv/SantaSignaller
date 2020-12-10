@@ -99,7 +99,7 @@ void loop() {
       if (delta < 0) delta += 31556952; // countdown until next year!
 
       // set blink interval
-      blink_delay = delta / 1000;
+      blink_delay = delta / 100;
 
       // feed the terminal
       Serial.printf("Only %d more seconds to go!\n", delta);
