@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "*.template": "jsonc",
+        "*.tcc": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "random": "cpp"
+    }
+}

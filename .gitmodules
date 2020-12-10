@@ -1,0 +1,3 @@
+[submodule "santaSignaller/src/ETV-WiFiSettings"]
+	path = santaSignaller/src/ETV-WiFiSettings
+	url = git@github.com:klushok-etv/ESP-WiFiSettings.git
