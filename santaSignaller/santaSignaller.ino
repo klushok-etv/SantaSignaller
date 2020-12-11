@@ -1,19 +1,19 @@
 /*  Santa Signaller
- *  
- *  This code is part of the Santa signaller project.
- *  Instructions how to assemble and upload can be found on
- *  https://klushok.etv.tudelft.nl/projects
- *  
- *  The code has been developed for and has been tested
- *  on a ESP8266 chip.
- *  
- *  It depends on a custom WiFiSettings library which, at 
- *  the time of writing, can be found on 
- *  https://github.com/klushok-etv/ESP-WiFiSettings
- *   
- * author: Bram den Ouden
- * 10-12-2020
- */
+
+    This code is part of the Santa signaller project.
+    Instructions how to assemble and upload can be found on
+    https://klushok.etv.tudelft.nl/projects
+
+    The code has been developed for and has been tested
+    on a ESP8266 chip.
+
+    It depends on a custom WiFiSettings library which, at
+    the time of writing, can be found on
+    https://github.com/klushok-etv/ESP-WiFiSettings
+
+   author: Bram den Ouden
+   10-12-2020
+*/
 
 
 
@@ -94,22 +94,23 @@ void loop() {
       timeClient.update();
       t = timeClient.getEpochTime();
 
-      // seconds until event starts
-      delta = epochEventStart - t;
-      if (delta < 0) delta += 31556952; // countdown until next year!
+      // Event happening
+      if (t >= epochEventStart && t <= epochEventEnd) {
+        Serial.println("IT'S THE SEASON TO BE JOLLY FALALALAAAAA LALALAAAAA");
+        blink_delay = random(100, 500);
+      } else {
+        // seconds until event starts
+        delta = epochEventStart - t;
+        if (delta < 0) delta += 31556952; // countdown until next year!
 
-      // set blink interval
-      blink_delay = delta / 100;
+        // set blink interval
+        blink_delay = delta / 100;
+        if (blink_delay <= 500) blink_delay = 500;
 
-      // feed the terminal
-      Serial.printf("Only %d more seconds to go!\n", delta);
-      Serial.printf("Only %.2f more days to go!\n", delta / 86400.0);
-    }
-
-    // Event happening
-    if (t >= epochEventStart && t <= epochEventEnd) {
-      Serial.println("IT'S THE SEASON TO BE JOLLY FALALALAAAAA LALALAAAAA");
-      blink_delay = random(100, 500);
+        // feed the terminal
+        Serial.printf("Only %d more seconds to go!\n", delta);
+        Serial.printf("Only %.2f more days to go!\n", delta / 86400.0);
+      }
     }
 
     // set previous millis to current timestamp
