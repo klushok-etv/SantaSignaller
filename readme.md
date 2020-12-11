@@ -1,5 +1,6 @@
 # Santa signaller
 
+More information and project description available on [klushok.etv.tudelft.nl/projects/view?id=9](https://klushok.etv.tudelft.nl/projects/view?id=9)
 
 ## setup
 - clone this repository
